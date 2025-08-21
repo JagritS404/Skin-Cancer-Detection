@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictor</title>
+    <link rel="stylesheet" href="model.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700,900" rel="stylesheet">
+</head>
+<body>
+    <h1 class="h2">DermCare</h1>
+    <div class="button-container">
+        <a href="Home.html" class="nav-button">HOME</a>
+        <a href="Introduction.html" class="nav-button">INTRODUCTION</a>
+        <a href="model.html" class="nav-button">MODEL</a>
+      </div>
+    <div class="upload-image">
+        <h2 class="heading">Upload an Image to Classify Lession Type</h2>
+    <form id="uploadForm" class="upload-Form">
+        <input type="file" id="imageInput" name="image" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+    <img id="imagePreview" class="image-preview" alt="Image Preview">
+    <p id="response" class="response-py"></p>
+    </div>
+    
+
+    <script>
+        
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.nav-button');
+        
+    // Get the current page's URL and extract just the filename (e.g., "model.html")
+    const currentPage = window.location.pathname.split("/").pop();
+
+    // Loop through buttons and match their href to the current page
+    buttons.forEach((button) => {
+      const buttonHref = button.getAttribute('href').split("/").pop(); // Extracts just the filename from href
+        
+      if (buttonHref === currentPage) {
+        button.classList.add('active'); // Add the active class to the matching button
+      }
+    });
+  });
+  
+  const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0]; // Get the uploaded file
+            if (file) {
+                const reader = new FileReader(); // Create a FileReader to read the file
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result; // Set the image source to the file data
+                    imagePreview.style.display = 'block'; // Make the image visible
+                };
+                reader.readAsDataURL(file); // Read the file as a data URL
+            } else {
+                imagePreview.style.display = 'none'; // Hide the image preview if no file is selected
+            }
+        });
+        const form = document.getElementById('uploadForm');
+        const responseParagraph = document.getElementById('response');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent form from refreshing the page
+            
+            const fileInput = document.getElementById('imageInput');
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/get_image_size', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+
+                if (result.error) {
+                    responseParagraph.textContent = `Error: ${result.error}`;
+                } else {
+                    responseParagraph.innerHTML = `We think this is ${result.message}. <br>Kindly consult your Doctor!`;
+                }
+            } catch (error) {
+                responseParagraph.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

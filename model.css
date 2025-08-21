@@ -1,0 +1,114 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(#b5cef2,  #ebd6e5);
+}
+
+.h2{
+  position: absolute;  /* or position: fixed; for fixed to viewport */
+  top: 0;
+  left: 0; 
+  margin: 0;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  color: #fd08ab; 
+}
+
+.button-container {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    gap: 20px;
+  }
+
+
+  .nav-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #a1a7c0;
+    border-color: #25012c;
+    color: black;
+    cursor: pointer;
+    
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-button.active {
+    background-color: #5372F0; /* Active button color */
+    color:white;
+    border-color: #091958;
+  }
+  
+  .image-preview{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 20px auto ;
+    border: 2px solid #7e116f;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    margin-top: 20px;
+    margin-left:200px;
+  }
+  .response-py{
+    margin:0;
+    margin-left:50px;
+    line-height: 1.4;
+    font-family: 'Lato';
+    color: #1f3662;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .upload-image{
+    width:700px;
+    height:500px;
+  }
+  .upload-Form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.upload-Form button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-Form button:hover {
+    background-color: #0056b3;
+}
+
+.heading{
+  margin:0;
+  margin-top: 30px;
+    margin-left:50px;
+    line-height: 1.4;
+    font-family: 'Lato';
+    color: #1f3662;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+
+}
