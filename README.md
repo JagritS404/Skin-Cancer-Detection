@@ -1,5 +1,4 @@
 # Skin-Cancer-Detection
-<h1>Project Skin Cancer Detection</h1>
 
 <h2> Home Page</h2>
 <img width="1366" height="768" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/6ade7f4e-3a66-4436-9aa2-358d264e4fde" />
