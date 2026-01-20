@@ -7,7 +7,7 @@ body {
   background: linear-gradient(#b5cef2,  #ebd6e5);
 }
 .h2{
-  position: absolute;  /* or position: fixed; for fixed to viewport */
+  position: absolute;
   top: 0;
   left: 0;
   margin: 0; 
