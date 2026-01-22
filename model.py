@@ -44,7 +44,6 @@ def get_image_size():
 
         x= x.reshape(1, *(100, 125, 3))
         x = x.reshape(1,125*100*3)
-        x=x/255.0
         single_image = x.reshape(100,125,3)  # Example input
         single_image = np.expand_dims(single_image, axis=0)  # Add batch dimension
         prediction = model.predict(single_image)
