@@ -38,13 +38,7 @@ def get_image_size():
         image = Image.open(file.stream)
         resized_image = image.resize((125,100))
         x=np.asarray(resized_image)
-
-        x = np.asarray(x.tolist())
         x = (x - 159.9)/46.39
-
-        x= x.reshape(1, *(100, 125, 3))
-        x = x.reshape(1,125*100*3)
-        single_image = x.reshape(100,125,3)  # Example input
         single_image = np.expand_dims(single_image, axis=0)  # Add batch dimension
         prediction = model.predict(single_image)
         prediction.argmax().item()
